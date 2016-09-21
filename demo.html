@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>combobox</title>
+	<script src="jquery.min.js"></script>
+	<script src="combobox.js"></script>
+	<style>
+	* {
+		padding: 0;
+		margin: 0;
+	}
+
+	body {
+		font: 13px microsoft yahei;
+	}
+	.item {
+		margin: 20px;
+	}
+	.item label {
+		line-height: 20px;
+		display: block;
+	}
+	.fly-combobox {
+		position: relative;
+		display: inline-block;
+		min-width: 100px;
+		width : 150px;
+	}
+	.fly-combobox-inner {
+	    position: relative;
+		display: inline-block;
+		width: 100%;
+	    height: 25px;
+	    line-height: 25px;
+	    padding: 0;
+	    text-align: left;
+	    vertical-align: middle;
+	    cursor: pointer;
+	    border: 1px solid #DDD;
+	    border-top: 1px solid #EEE;
+	    border-bottom: 1px solid #B7B7B7;
+	    outline: 0 none;
+	    background: #fafafa;
+	}
+	.fly-combobox-text {
+		text-indent: 10px;
+		height: 25px;
+		font: 13px/25px microsoft yahei;
+		color: #313131;
+		margin-right: 30px;
+		white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+   	}
+	.fly-combobox-toggle {
+		position: absolute;
+	    right: 4px;
+	    top: 50%;
+	    margin-top: -2px;
+	    border-top: 5px solid #A7A7A7;
+	    border-left: 5px dashed transparent;
+	    border-right: 5px dashed transparent;
+	    border-bottom: 0 none;
+	    display: block;
+	    width: 0;
+	    height: 0;
+	    overflow: hidden;
+	    line-height: 0;
+	    font-size: 0;
+	}
+	.fly-combobox-open .fly-combobox-toggle{
+		margin-top: -3px;
+	    border-top: 0 none;
+	    border-bottom: 5px solid #A7A7A7;
+	}
+	.fly-combobox-items {
+		display: none;
+		width: 100%;
+		position: absolute;
+	    left: 0;
+	    top: 26px;
+	    background: #FFF;
+    	border: 1px solid #DCDCDC;
+	}
+	.fly-combobox-open {
+		display: block;
+	}
+	.fly-combobox-items li {
+		list-style: none;
+		height: 30px;
+		padding:0 10px;
+		font: 12px/30px microsoft yahei;
+		cursor: pointer;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		border-top: 1px solid #FFF;
+	}
+	.fly-combobox-items li.fly-combobox-selected, .fly-combobox-items li.fly-combobox-selected:hover {
+		background-color: #D9E8FB;
+		color: #313131;
+	}
+	.fly-combobox-items li:hover {
+		background-color: #EEEEEE;
+	}
+	</style>
+</head>
+<body>
+	<div class="item">
+		<label for="">动态数据单选：</label>
+		<select name="S1" id="S1"></select>
+	</div>
+
+	<div class="item">
+		<label for="">动态数据多选：</label>
+		<select name="S2" id="S2" multiple></select>
+	</div>
+
+	<div class="item">
+		<label for="">原生数据：</label>
+		<select name="S3" id="S3">
+			<option value="">请选择</option>
+			<option value="kfc">肯德基</option>
+			<option value="madn">麦当劳</option>
+			<option value="bsk">必胜客</option>
+			<option value="yhdw">永和大王</option>
+		</select>
+	</div>
+	<script>
+	var data1 = [
+			{text:"宝马",value:"bmw"},
+			{text:"奔驰",value:"benz"},
+			{text:"奥迪",value:"aodi"},
+			{text:"法拉利",value:"faleri"},
+			{text:"保时捷",value:"bosc"}
+		]
+		,data2 = [
+			{text:"肯德基",value:"kfc"},
+			{text:"麦当劳",value:"madn"},
+			{text:"必胜客",value:"bsk"},
+			{text:"永和大王",value:"yhdw"},
+			{text:"星巴客",value:"starbu"}
+		];
+		
+	var S1 = $("#S1").combobox({comboboxClass: "class-1",data: data1})
+	var S2 = $("#S2").combobox({comboboxClass: "class-2",data: data2})
+	var S3 = $("#S3").combobox({comboboxClass: "class-3"})
+
+
+
+	S1.data("fly.combobox").setValue("aodi")
+	S2.data("fly.combobox").setValue(["bsk","madn"])
+	S3.data("fly.combobox").setValue("bsk")
+	</script>
+
+
+</body>
+</html>
